@@ -1,9 +1,11 @@
-Reaction Timer - A simple tool to show how quickly it takes for a human to respond to a light turning on.
+Reaction Timer
 ==================
 
 (Project image coming soon)
 
-The reaction timer illuminates a large arcade button then starts a timer. When the user responds and hits the button the 7-segment display shows the user how many milliseconds passed. This is a great experiement for teaching kids about the delay between our brain and our actions (formally called [nerve conduction velocity](http://en.wikipedia.org/wiki/Nerve_conduction_velocity)).
+The reaction timer is a simple tool to show how quickly it takes for a human to respond to a light turning on. When the game begins a large arcade button illuminates then starts a timer. When the user responds and hits the button the 7-segment display shows the user how many milliseconds passed. This is a great experiement for teaching kids about the delay between our brain and our actions (formally called [nerve conduction velocity](http://en.wikipedia.org/wiki/Nerve_conduction_velocity)).
+
+A wishlist of all the SparkFun parts used in this project can be found [here](http://sfe.io/w75580). A few bits of wire and a solering iron and you should be good to go!
 
 Parts used:
 -------------------
