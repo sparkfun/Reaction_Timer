@@ -93,6 +93,8 @@ void playGame()
 
   while(digitalRead(button) == LOW) ; //Wait for user to stop hitting button  
 
+  delay(20);  // delay to debounce the button
+
   LEDLOW(); //Turn LED on low to indicate the beginning of the game
 
   //Get random number of milliseconds
