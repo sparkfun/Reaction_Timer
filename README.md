@@ -1,7 +1,8 @@
 Reaction Timer
 ==================
 
-(Project image coming soon)
+
+[Reaction Timer Project](https://f.cloud.github.com/assets/3579244/1716148/dd423d86-61bc-11e3-9737-e6d62741f4eb.jpg)
 
 The reaction timer is a simple tool to show how quickly it takes for a human to respond to a light turning on. When the game begins a large arcade button illuminates then starts a timer. When the user responds and hits the button the 7-segment display shows the user how many milliseconds passed. This is a great experiement for teaching kids about the delay between our brain and our actions (formally called [nerve conduction velocity](http://en.wikipedia.org/wiki/Nerve_conduction_velocity)).
 
