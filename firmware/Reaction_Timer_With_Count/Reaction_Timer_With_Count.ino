@@ -11,10 +11,14 @@
  
  If the user presses the button before it is illuminated the display will show '-Err' to indicate error.
  
+ This example incorporates recording a game count to EEPROM. Each time the unit is powered the number of games is displayed.
+ 
  */
 
 #include <SoftwareSerial.h>
 SoftwareSerial segmentDisplay(3, 2); //RX, TX to the OpenSegment display
+
+#include <EEPROM.h> //Used to record the number of games played
 
 int LED = 9;
 int button = 7;
@@ -45,7 +49,7 @@ void setup()
   segmentDisplay.begin(9600); //Talk to the Serial7Segment at 9600 bps
   segmentDisplay.write('v'); //Reset the display - this forces the cursor to return to the beginning of the display
 
-  scrollTitle();
+  displayGames(); //Display the number of games played
 }
 
 void loop()
@@ -138,6 +142,9 @@ void playGame()
   Serial.print("This time played:");
   Serial.println(gamesPlayed);
   
+  EEPROM.write(0x00, gamesPlayed >> 8); //MSB
+  EEPROM.write(0x01, gamesPlayed & 0x00FF); //LSB
+
   //After the game is complete, the display will show the gameTime for awhile
 }
 
@@ -207,4 +214,39 @@ void scrollTitle()
 
   segmentDisplay.write('v'); //Reset the display
   segmentDisplay.print(gameTime); //Display the last game time
+}
+
+//Display the number of games played
+void displayGames(void)
+{
+  gamesPlayed = ((int)EEPROM.read(0x00) << 8) | EEPROM.read(0x01); //Convert two 8-bit numbers into 16-bit int
+  if(gamesPlayed == 0xFFFF) gamesPlayed = 0; //Ignore this initial value
+  
+  Serial.print("Played:");
+  Serial.println(gamesPlayed);
+  
+  segmentDisplay.write('v'); //Reset the display
+  
+  String numGames = (String) gamesPlayed; //Turn this variable into a string
+  numGames = "    played-" + numGames;
+  
+  for(int j = 0 ; j < 2 ; j++)
+  {
+    for(int x = 0 ; x < numGames.length() - 4 ; x++)
+    {
+      String tempStr = numGames.substring(x, x+4); //Chop out four letters from the string
+  
+      segmentDisplay.write('v'); //Reset the display
+      segmentDisplay.print(tempStr);
+      
+      for(int y = 0 ; y < 25 ; y++)
+      {
+        if(digitalRead(button) == LOW) return; //If the button is pressed, bail!
+        delay(10);
+      }
+    }
+  }
+
+  segmentDisplay.write('v'); //Reset the display - this forces the cursor to return to the beginning of the display
+  segmentDisplay.write("0000"); //Leave the display in a clean state
 }
