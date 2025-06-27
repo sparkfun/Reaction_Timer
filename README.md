@@ -1,7 +1,7 @@
 Reaction Timer
 ==================
 
-[![Reaction Timer Project](https://dlnmh9ip6v2uc.cloudfront.net/r/600-600/assets/7/7/4/c/2/52c0ab60ce395f4f738b456e.jpg)](https://dlnmh9ip6v2uc.cloudfront.net/assets/7/7/4/c/2/52c0ab60ce395f4f738b456e.jpg)
+[![Reaction Timer Project](https://cdn.sparkfun.com/r/600-600/assets/8/5/7/6/0/52c0ab60ce395f73218b4569.jpg)](https://cdn.sparkfun.com/assets/8/5/7/6/0/52c0ab60ce395f73218b4569.jpg)
 
 *Reaction timer with a slow reaction time of 382ms*
 
